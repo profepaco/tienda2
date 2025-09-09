@@ -24,24 +24,24 @@
                 <table class="w-full">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-sm font-extra-bold leading-4 tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase border-b border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-neutral-700">ID</th>
-                            <th class="px-6 py-3 text-sm font-extra-bold leading-4 tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase border-b border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-neutral-700">Nombre</th>
-                            <th class="px-6 py-3 text-sm font-extra-bold leading-4 tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase border-b border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-neutral-700">Descripción</th>
-                            <th class="px-6 py-3 text-sm font-extra-bold leading-4 tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase border-b border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-neutral-700">Precio</th>
-                            <th class="px-6 py-3 text-sm font-extra-bold leading-4 tracking-wider text-left text-gray-500 dark:text-gray-300 uppercase border-b border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-neutral-700">Acciones</th>
+                            <x-th-table>ID</x-th-table>
+                            <x-th-table>Nombre</x-th-table>
+                            <x-th-table>Descripción</x-th-table>
+                            <x-th-table>Precio</x-th-table>
+                            <x-th-table>Acciones</x-th-table>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($products as $product)
                             <tr>
-                                <td class="py-4 px-6 whitespace-no-wrap border-b border-gray-200 dark:border-gray-600">{{ $product->id }}</td>
-                                <td class="py-4 px-6 whitespace-no-wrap border-b border-gray-200 dark:border-gray-600">{{ $product->name }}</td>
-                                <td class="py-4 px-6 whitespace-no-wrap border-b border-gray-200 dark:border-gray-600">{{ $product->description }}</td>
-                                <td class="py-4 px-6 whitespace-no-wrap border-b border-gray-200 dark:border-gray-600">${{ number_format($product->price, 2) }}</td>
-                                <td class="py-4 px-6 whitespace-no-wrap border-b border-gray-200 dark:border-gray-600">
+                                <x-td-table>{{ $product->id }}</x-td-table>
+                                <x-td-table>{{ $product->name }}</x-td-table>
+                                <x-td-table>{{ $product->description }}</x-td-table>
+                                <x-td-table>${{ number_format($product->price, 2) }}</x-td-table>
+                                <x-td-table>
                                     <flux:button size="xs" wire:click="edit({{ $product->id }})" color="emerald" variant="primary">Editar</flux:button>
                                     <flux:button size="xs" wire:click="delete({{ $product->id }})" color="red" variant="primary" >Eliminar</flux:button>
-                                </td>
+                                </x-td-table>
                             </tr>
                         @empty
                             <tr>
